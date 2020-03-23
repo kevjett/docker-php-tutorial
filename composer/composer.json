@@ -1,0 +1,8 @@
+{
+    "require": {
+        "wangcj/helloworld": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}

@@ -41,6 +41,7 @@ services:
         - TARGET_PHP_VERSION=${PHP_VERSION}
         - TZ=${TIMEZONE}
     volumes:
+      - ${COMPOSER_PATH_HOST}:${COMPOSER_PATH_CONTAINER}
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
     networks:
       - backend

@@ -1,18 +1,24 @@
 #!/bin/sh
 
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+NOCOLOR="\033[0m"
+BOLD="\033[4m"
+
 function service_info(){
     service=$1
     echo ""
-    echo -e "Testing service '\e[1m$service\e[0m'"
+    echo -e "Testing service '${BOLD}$service${NOCOLOR}'"
     echo "======="
 }
 
 function assert_result(){
     if [[ "$1" == true ]];
     then
-        echo -e "\e[32;1mOK\e[0m"
+        echo -e "${GREEN}OK${NOCOLOR}"
     else
-        echo -e "\e[31;1mERROR\e[0m"
+        echo -e "${RED}ERROR${NOCOLOR}"
+        exit 1
     fi;
 }
 
@@ -97,4 +103,4 @@ test_host_docker_internal ${service}
 service="nginx"
 service_info ${service}
 test_container_is_running ${service}
-test_request_nginx 127.0.0.1 "Hello world"
+test_request_nginx 127.0.0.1:8080 "Hello world"
